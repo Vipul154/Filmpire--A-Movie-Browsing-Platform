@@ -31,12 +31,10 @@ app.use("/api/v1/movie", protectedRoute, movieRoutes);
 app.use("/api/v1/tv", protectedRoute, tvRoutes);
 app.use("/api/v1/search", protectedRoute, searchRoutes);
 
-if (envVars.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-  });
-}
+app.use(express.static(path.join(__dirname, "../client/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server started at port : http://localhost:${PORT}`);
