@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server/server.js",
     "start": "node server/server.js",
-    "build": "npm install --prefix ./client && npm install && npm run build --prefix ./client"
+    "build": " --production=false npm install --prefix ./client && npm install && npm run build --prefix ./client "
   },
   "keywords": [],
   "author": "",
