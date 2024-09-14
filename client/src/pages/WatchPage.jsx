@@ -55,9 +55,7 @@ function WatchPage() {
   useEffect(() => {
     const getTrailers = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/v1/${contentType}/${id}/trailers`
-        );
+        const res = await axios.get(`/api/v1/${contentType}/${id}/trailers`);
         setTrailers(res.data.trailers);
       } catch (error) {
         // console.log(error.message);
@@ -70,9 +68,7 @@ function WatchPage() {
   useEffect(() => {
     const getSimilarContent = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/v1/${contentType}/${id}/similar`
-        );
+        const res = await axios.get(`/api/v1/${contentType}/${id}/similar`);
         setSimilarContent(res.data.similar);
       } catch (error) {
         // console.log(error.message);
@@ -85,9 +81,7 @@ function WatchPage() {
   useEffect(() => {
     const getContentDetails = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/v1/${contentType}/${id}/details`
-        );
+        const res = await axios.get(`/api/v1/${contentType}/${id}/details`);
         setContent(res.data.content);
       } catch (error) {
         // console.log(error.message);

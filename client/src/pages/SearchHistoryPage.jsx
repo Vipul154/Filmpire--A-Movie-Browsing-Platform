@@ -39,9 +39,7 @@ const SearchHistoryPage = () => {
   useEffect(() => {
     const getSearchHistory = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/api/v1/search/history`
-        );
+        const res = await axios.get(`/api/v1/search/history`);
         setSearchHistory(res.data.content);
       } catch (error) {
         // console.log(error.message);
@@ -53,9 +51,7 @@ const SearchHistoryPage = () => {
 
   const handleDelete = async (entry) => {
     try {
-      await axios.delete(
-        `http://localhost:5000/api/v1/search/history/${entry.id}`
-      );
+      await axios.delete(`/api/v1/search/history/${entry.id}`);
       setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
       toast.success("History item deleted");
     } catch (error) {

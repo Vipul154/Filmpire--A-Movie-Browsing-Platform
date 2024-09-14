@@ -9,9 +9,7 @@ const useGetTrendingContent = () => {
 
   useEffect(() => {
     const getTrendingContent = async () => {
-      const res = await axios.get(
-        `http://localhost:5000/api/v1/${contentType}/trending`
-      );
+      const res = await axios.get(`/api/v1/${contentType}/trending`);
       setTrendingContent(res.data.content);
     };
 

@@ -15,10 +15,7 @@ export const useAuthStore = create((set) => ({
     try {
       set({ isSigningUp: true });
 
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/signup",
-        credentials
-      );
+      const response = await axios.post("/api/v1/auth/signup", credentials);
 
       // Show specific error messages based on response
       if (response.data.success === false) {
@@ -54,10 +51,7 @@ export const useAuthStore = create((set) => ({
   login: async (credentials) => {
     set({ isLoggingIn: true });
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/v1/auth/login",
-        credentials
-      );
+      const response = await axios.post("/api/v1/auth/login", credentials);
       set({ user: response.data.user, isLoggingIn: false });
       toast.success("Login Successful");
     } catch (error) {
@@ -74,7 +68,7 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     set({ IsLoggingOut: true });
     try {
-      await axios.post("http://localhost:5000/api/v1/auth/logout");
+      await axios.post("/api/v1/auth/logout");
       set({ user: null, IsLoggingOut: false });
       toast.success("Logout Successful");
     } catch (error) {
@@ -86,9 +80,7 @@ export const useAuthStore = create((set) => ({
     set({ isCheckingAuth: true });
 
     try {
-      const response = await axios.get(
-        "http://localhost:5000/api/v1/auth/authCheck"
-      );
+      const response = await axios.get("/api/v1/auth/authCheck");
       set({ user: response.data.user, isCheckingAuth: false });
     } catch (error) {
       // console.log(error.response.data.messsage);
